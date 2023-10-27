@@ -88,6 +88,15 @@
                             </div>
                         </div>
                         <div class="mb-3">
+                            <label for="role" class="form-label">Login Sebagai</label>
+                            <select name="role" id="role" class="form-select">
+                                <option value="1">siswa</option>
+                                <option value="2">guru mata pelajaran</option>
+                                <option value="3">guru piket</option>
+                                <option value="4">wakil kurikulum</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                         </div>
                     </form>
