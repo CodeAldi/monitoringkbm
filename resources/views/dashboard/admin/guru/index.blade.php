@@ -2,9 +2,15 @@
 @section('content')
     <div class="card h-100">
         <div class="card-body">
-            <h5 class="card-title">
-                List Guru
-            </h5>
+            <div class="row mb-2">
+                <div class="col-md-8">
+                    <h5>List Guru</h5>
+                </div>
+                <div class="col-md-4">
+                    <a href="#" class="btn btn-primary float-end"><i
+                            class='menu-icon bx bxs-plus-square'></i>Tambah Guru</a>
+                </div>
+            </div>
             <div class="table-responsive text-nowrap h-50">
                 <table class="table">
                     <thead>
