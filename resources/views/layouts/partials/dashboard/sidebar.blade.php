@@ -84,8 +84,6 @@
                     <circle cx="17" cy="4" r="2"></circle>
                     <path d="M20.21 7.73a1 1 0 0 0-1-.73h-4.5a1 1 0 0 0-1 .73L12 14h2l-1 4h2v4h4v-4h2l-1-4h2z"></path>
                 </svg>
-                {{-- <i class='menu-icon bx bx-male-female' style='color:black'></i> --}}
-                {{-- <i class='menu-icon bx bxs-user-circle' style='color:rgb(90, 89, 89)'></i> --}}
                 Siswa
             </a>
         </li>
