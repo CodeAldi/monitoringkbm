@@ -7,7 +7,7 @@
                 <h5>List Mata Pelajaran</h5>
             </div>
             <div class="col-md-4">
-                <a href="#" class="btn btn-primary float-end"><i class='menu-icon bx bxs-plus-square'></i>Tambah
+                <a href="{{ route('admin.mapel.create') }}" class="btn btn-primary float-end"><i class='menu-icon bx bxs-plus-square'></i>Tambah
                     Mata Pelajaran</a>
             </div>
         </div>

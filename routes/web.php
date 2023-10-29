@@ -33,6 +33,7 @@ Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->g
     // menu siswa end
     // menu mapel
     Route::get('admin/list-mapel','mapelIndex')->name('admin.mapel.index');
+    Route::get('admin/create-mapel','mapelCreate')->name('admin.mapel.create');
     // menu mapel end
     // menu jurusan
     Route::get('admin/list-jurusan','jurusanIndex')->name('admin.jurusan.index');

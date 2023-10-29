@@ -29,6 +29,11 @@ class AdminController extends Controller
             'title' => 'List Mapel'
         ]);
     }
+    function mapelCreate(): View {
+        return view('dashboard.admin.mapel.create',[
+            'title' => 'Create Mapel'
+        ]);
+    }
     // bagian mapel end
     // bagian jurusan start
     function jurusanIndex(): View {
