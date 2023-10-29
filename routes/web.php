@@ -25,7 +25,21 @@ Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth
 
 // user admin
 Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->group(function(){
+    // menu guru
     Route::get('admin/list-guru','guruIndex')->name('admin.guru.index');
+    // menu guru end
+    // menu siswa
+    Route::get('admin/list-siswa','siswaIndex')->name('admin.siswa.index');
+    // menu siswa end
+    // menu mapel
+    Route::get('admin/list-mapel','mapelIndex')->name('admin.mapel.index');
+    // menu mapel end
+    // menu jurusan
+    Route::get('admin/list-jurusan','jurusanIndex')->name('admin.jurusan.index');
+    // menu jurusan end
+    // menu kelas
+    Route::get('admin/list-kelas','kelasIndex')->name('admin.kelas.index');
+    // menu kelas end
 });
 
 Route::controller(GuruPiketController::class)->middleware(['auth','role:guru piket'])->group(function(){

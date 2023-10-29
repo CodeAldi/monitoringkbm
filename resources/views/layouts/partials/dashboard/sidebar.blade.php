@@ -75,8 +75,8 @@
                 Guru
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('admin.siswa.*')) ? 'active' : '' }}">
+            <a href="{{ route('admin.siswa.index') }}" class="menu-link">
                 <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon" width="24" height="24" viewBox="0 0 24 24"
                     style="fill: rgb(140,153,167);transform: ;msFilter:;">
                     <circle cx="6" cy="4" r="2"></circle>
@@ -94,20 +94,20 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data Master</span>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('admin.mapel.*')) ? 'active' : '' }}">
+            <a href="{{ route('admin.mapel.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-book-reader'></i>
                 Mata Pelajaran
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('admin.jurusan.*')) ? 'active' : '' }}">
+            <a href="{{ route('admin.jurusan.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-layer'></i>
                 Jurusan
             </a>
         </li>
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('admin.kelas.*')) ? 'active' : '' }}">
+            <a href="{{ route('admin.kelas.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-group'></i>
                 Kelas
             </a>
