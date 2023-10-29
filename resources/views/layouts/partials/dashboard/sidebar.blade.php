@@ -63,11 +63,72 @@
                 Dashboard
             </a>
         </li>
+
+        @if (Auth()->user()->hasRole('admin'))
+        {{-- data user --}}
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Data Users</span>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-user'></i>
+                Guru
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <svg xmlns="http://www.w3.org/2000/svg" class="menu-icon" width="24" height="24" viewBox="0 0 24 24"
+                    style="fill: rgb(140,153,167);transform: ;msFilter:;">
+                    <circle cx="6" cy="4" r="2"></circle>
+                    <path d="M9 7H3a1 1 0 0 0-1 1v7h2v7h4v-7h2V8a1 1 0 0 0-1-1z"></path>
+                    <circle cx="17" cy="4" r="2"></circle>
+                    <path d="M20.21 7.73a1 1 0 0 0-1-.73h-4.5a1 1 0 0 0-1 .73L12 14h2l-1 4h2v4h4v-4h2l-1-4h2z"></path>
+                </svg>
+                {{-- <i class='menu-icon bx bx-male-female' style='color:black'></i> --}}
+                {{-- <i class='menu-icon bx bxs-user-circle' style='color:rgb(90, 89, 89)'></i> --}}
+                Siswa
+            </a>
+        </li>
+        {{-- /.data user --}}
+        {{-- data master --}}
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Data Master</span>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-book-reader'></i>
+                Mata Pelajaran
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-layer'></i>
+                Jurusan
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-group'></i>
+                Kelas
+            </a>
+        </li>
+        {{-- /.data master --}}
+        @elseif(Auth()->user()->hasRole('wakil kurikulum'))
+        
+        @elseif(Auth()->user()->hasRole('guru mapel'))
+        
+        @elseif(Auth()->user()->hasRole('wakil piket'))
         <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class='menu-icon bx bx-show'></i>
                 Pantau Proses KBM
             </a>
         </li>
+        
+        @elseif(Auth()->user()->hasRole('siswa'))
+        @endif
+        {{-- <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Text menu divider</span>
+        </li> --}}
     </ul>
 </aside>

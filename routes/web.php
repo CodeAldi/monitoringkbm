@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruPiketController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[AuthenticationController::class, 'RenderLoginPage'])->name('login');
-Route::get('/register',[AuthenticationController::class, 'RenderRegisterPage'])->name('register');
-
-Route::controller(GuruPiketController::class)->group(function(){
+Route::get('/',[AuthenticationController::class, 'RenderLoginPage'])->middleware('guest')->name('login');
+Route::get('/register',[AuthenticationController::class, 'RenderRegisterPage'])->middleware('guest')->name('register');
+Route::post('/authenticate',[AuthenticationController::class, 'authenticate'])->middleware('guest')->name('authenticate');
+Route::get('/logout',[AuthenticationController::class,'logout'])->middleware('auth')->name('logout');
+Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::controller(GuruPiketController::class)->middleware(['auth','role:guru piket'])->group(function(){
     Route::get('guru-piket/home','home')->name('piket.home');
 });

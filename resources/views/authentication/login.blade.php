@@ -66,7 +66,7 @@
                     <h4 class="mb-2">Welcome ! 👋</h4>
                     <p class="mb-4">Please sign-in to your account</p>
 
-                    <form id="formAuthentication" class="mb-3" action="" method="POST">
+                    <form id="formAuthentication" class="mb-3" action="{{ route('authenticate') }}" method="POST">
                         @csrf
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>

@@ -47,6 +47,6 @@ class User extends Authenticatable
     ];
 
     function hasRole($role) {
-        return $this->role == $role;
+        return $this->role == UserRole::tryFrom($role);
     }
 }
