@@ -57,8 +57,8 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item">
-            <a href="#" class="menu-link">
+        <li class="menu-item {{ (Request::RouteIs('dashboard')) ? 'active' : '' }}">
+            <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 Dashboard
             </a>
@@ -69,7 +69,7 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text">Data Users</span>
         </li>
-        <li class="menu-item">
+        <li class="menu-item {{ (Request::RouteIs('admin.guru.*')) ? 'active' : '' }}">
             <a href="{{ route('admin.guru.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-user'></i>
                 Guru
