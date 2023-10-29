@@ -70,7 +70,7 @@
             <span class="menu-header-text">Data Users</span>
         </li>
         <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('admin.guru.index') }}" class="menu-link">
                 <i class='menu-icon bx bx-user'></i>
                 Guru
             </a>

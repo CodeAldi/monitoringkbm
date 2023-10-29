@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GuruPiketController;
@@ -21,6 +22,12 @@ Route::get('/register',[AuthenticationController::class, 'RenderRegisterPage'])-
 Route::post('/authenticate',[AuthenticationController::class, 'authenticate'])->middleware('guest')->name('authenticate');
 Route::get('/logout',[AuthenticationController::class,'logout'])->middleware('auth')->name('logout');
 Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth')->name('dashboard');
+
+// user admin
+Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->group(function(){
+    Route::get('admin/guru/list','guruIndex')->name('admin.guru.index');
+});
+
 Route::controller(GuruPiketController::class)->middleware(['auth','role:guru piket'])->group(function(){
     Route::get('guru-piket/home','home')->name('piket.home');
 });
