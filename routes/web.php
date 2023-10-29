@@ -25,7 +25,7 @@ Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth
 
 // user admin
 Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->group(function(){
-    Route::get('admin/guru/list','guruIndex')->name('admin.guru.index');
+    Route::get('admin/list-guru','guruIndex')->name('admin.guru.index');
 });
 
 Route::controller(GuruPiketController::class)->middleware(['auth','role:guru piket'])->group(function(){
