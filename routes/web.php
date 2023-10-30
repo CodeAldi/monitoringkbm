@@ -34,6 +34,7 @@ Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->g
     // menu mapel
     Route::get('admin/list-mapel','mapelIndex')->name('admin.mapel.index');
     Route::get('admin/create-mapel','mapelCreate')->name('admin.mapel.create');
+    Route::post('admin/store-mapel','mapelStore')->name('admin.mapel.store');
     // menu mapel end
     // menu jurusan
     Route::get('admin/list-jurusan','jurusanIndex')->name('admin.jurusan.index');

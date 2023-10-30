@@ -3,12 +3,12 @@
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Create New Mapel</h5>
-        <form action="#" method="POST">
+        <form action="{{ route('admin.mapel.store') }}" method="POST">
             @csrf
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label" for="basic-default-name">Nama Mapel</label>
+                <label class="col-sm-2 col-form-label" for="nama_mapel">Nama Mapel</label>
                 <div class="col-sm-10">
-                    <input type="text" name="nama_mapel" class="form-control" id="basic-default-name" placeholder="Nama Mapel..." />
+                    <input type="text" name="nama_mapel" class="form-control" id="nama_mapel" required placeholder="Nama Mapel..." />
                 </div>
             </div>
             <div class="row">

@@ -1,5 +1,16 @@
 @extends('layouts.dashboard')
 @section('content')
+<div class="bs-toast toast show bg-success toast-placement-ex m-4 top-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <i class="bx bx-bell me-2"></i>
+        <div class="me-auto fw-semibold">Sukses</div>
+        {{-- <small>11 mins ago</small> --}}
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        Fruitcake chocolate bar tootsie roll gummies gummies jelly beans cake.
+    </div>
+</div>
 <div class="card h-100">
     <div class="card-body">
         <div class="row mb-2">
@@ -7,7 +18,8 @@
                 <h5>List Mata Pelajaran</h5>
             </div>
             <div class="col-md-4">
-                <a href="{{ route('admin.mapel.create') }}" class="btn btn-primary float-end"><i class='menu-icon bx bxs-plus-square'></i>Tambah
+                <a href="{{ route('admin.mapel.create') }}" class="btn btn-primary float-end"><i
+                        class='menu-icon bx bxs-plus-square'></i>Tambah
                     Mata Pelajaran</a>
             </div>
         </div>
@@ -86,3 +98,6 @@
     </div>
 </div>
 @endsection
+@push('page-js')
+<script src="{{ asset('assets/js/ui-toasts.js') }}"></script>
+@endpush

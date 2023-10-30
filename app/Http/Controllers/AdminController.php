@@ -34,6 +34,10 @@ class AdminController extends Controller
             'title' => 'Create Mapel'
         ]);
     }
+    function mapelStore(Request $request) {
+        
+        return redirect()->route('admin.mapel.index');
+    }
     // bagian mapel end
     // bagian jurusan start
     function jurusanIndex(): View {
