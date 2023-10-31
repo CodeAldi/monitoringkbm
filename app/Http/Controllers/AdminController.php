@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Alert;
+use App\Models\Jurusan;
 use App\Models\Mapel;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -72,9 +73,47 @@ class AdminController extends Controller
     // bagian mapel end
     // bagian jurusan start
     function jurusanIndex(): View {
+        $jurusan = Jurusan::latest()->paginate(10);
+        
         return view('dashboard.admin.jurusan.index',[
             'title' => 'List Jurusan',
+            'jurusan'=>$jurusan,
         ]);
+    }
+    function jurusanCreate() : View {
+        return view('dashboard.admin.jurusan.create',[
+            'title' => 'Create Jurusan'
+        ]);
+    }
+    function jurusanStore(Request $request) : RedirectResponse {
+        $validatedData = $request->validate([
+            'nama_jurusan' => 'required|string|max:255|unique:jurusan',
+        ]);
+        $jurusan = new jurusan;
+        $jurusan->nama_jurusan = $validatedData['nama_jurusan'];
+        $jurusan->save();
+        return redirect()->route('admin.jurusan.index')->with('success', 'Jurusan Berhasil DiTambahkan');
+    }
+    function jurusanEdit($id) : View {
+        $jurusan = Jurusan::find($id);
+        return view('dashboard.admin.jurusan.edit',[
+            'title'=>'Edit Jurusan',
+            'jurusan' => $jurusan,
+        ]);
+    }
+    function jurusanUpdate(Request $request,$id) : RedirectResponse {
+        $jurusan = Jurusan::find($id);
+        $validatedData = $request->validate([
+            'nama_jurusan' => 'required|string|max:255|unique:jurusan',
+        ]);
+        $jurusan->nama_jurusan = $validatedData['nama_jurusan'];
+        $jurusan->save();
+        return redirect()->route('admin.jurusan.index')->with('success', 'Jurusan Berhasil DiEdit');
+    }
+    function jurusanDestroy(Jurusan $jurusan){
+        // $jurusan->delete();
+        // alert()->success('Success!', 'Jurusan Deleted');
+        return redirect()->route('admin.jurusan.index');
     }
     // bagian jurusan end
     // bagian kelas start

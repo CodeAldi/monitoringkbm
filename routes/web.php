@@ -41,6 +41,11 @@ Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->g
     // menu mapel end
     // menu jurusan
     Route::get('admin/list-jurusan','jurusanIndex')->name('admin.jurusan.index');
+    Route::get('admin/create-jurusan','jurusanCreate')->name('admin.jurusan.create');
+    Route::post('admin/store-jurusan','jurusanStore')->name('admin.jurusan.store');
+    Route::get('admin/{id}/edit-jurusan','jurusanEdit')->name('admin.jurusan.edit');
+    Route::post('admin/{id}/update-jurusan', 'jurusanUpdate')->name('admin.jurusan.update');
+    Route::delete('admin/{jurusan}/delete-jurusan', 'jurusanDestroy')->name('admin.jurusan.destroy');
     // menu jurusan end
     // menu kelas
     Route::get('admin/list-kelas','kelasIndex')->name('admin.kelas.index');

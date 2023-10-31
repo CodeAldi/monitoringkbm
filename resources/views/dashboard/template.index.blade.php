@@ -1,5 +1,19 @@
 @extends('layouts.dashboard')
 @section('content')
+@if (session('success'))
+<div class="bs-toast toast show bg-success toast-placement-ex m-4 top-0 end-0" role="alert" aria-live="assertive"
+    aria-atomic="true">
+    <div class="toast-header">
+        <i class="bx bx-bell me-2"></i>
+        <div class="me-auto fw-semibold">Sukses</div>
+        {{-- <small>11 mins ago</small> --}}
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+        {{ session('success') }}
+    </div>
+</div>
+@endif
 <div class="card h-100">
     <div class="card-body">
         <div class="row mb-2">
@@ -86,3 +100,20 @@
     </div>
 </div>
 @endsection
+@push('page-js')
+<script src="{{ asset('assets/js/ui-toasts.js') }}"></script>
+@endpush
+
+<script>
+    function konfirmasi() {
+        Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+        })
+    }
+</script>
