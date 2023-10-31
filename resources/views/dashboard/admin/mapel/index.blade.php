@@ -50,7 +50,7 @@
                                             <form action="{{ route("admin.mapel.destroy",["mapel"=>$item]) }}" method="POST">
                                                 @csrf
                                                 @method('delete')
-                                                <button class="dropdown-item btn" data-confirm-delete="true" ><i class="bx bx-trash me-2"></i>
+                                                <button class="dropdown-item btn" onclick="konfirmasi()" ><i class="bx bx-trash me-2"></i>
                                                     Delete</button>
                                             </form>
                                     </div>
@@ -71,3 +71,17 @@
 @push('page-js')
 <script src="{{ asset('assets/js/ui-toasts.js') }}"></script>
 @endpush
+
+<script>
+    function konfirmasi() {
+        Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+        })
+    }
+</script>
