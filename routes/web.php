@@ -35,6 +35,9 @@ Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->g
     Route::get('admin/list-mapel','mapelIndex')->name('admin.mapel.index');
     Route::get('admin/create-mapel','mapelCreate')->name('admin.mapel.create');
     Route::post('admin/store-mapel','mapelStore')->name('admin.mapel.store');
+    Route::get('admin/{id}/edit-mapel','mapelEdit')->name('admin.mapel.edit');
+    Route::post('admin/{id}/update-mapel','mapelUpdate')->name('admin.mapel.update');
+    Route::delete('admin/{mapel}/delete-mapel','mapelDestroy')->name('admin.mapel.destroy');
     // menu mapel end
     // menu jurusan
     Route::get('admin/list-jurusan','jurusanIndex')->name('admin.jurusan.index');

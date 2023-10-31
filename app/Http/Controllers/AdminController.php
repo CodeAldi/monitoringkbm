@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Alert;
+use App\Models\Mapel;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 
@@ -10,7 +13,7 @@ class AdminController extends Controller
     // user admin
 
     // bagian guru start
-    function guruIndex() {
+    function guruIndex() : View {
         return view('dashboard.admin.guru.index',[
             'title' => 'List Guru',
         ]);
@@ -25,17 +28,45 @@ class AdminController extends Controller
     // bagian siswa end
     // bagian mapel start
     function mapelIndex() : View {
-        return view('dashboard.admin.mapel.index',[
-            'title' => 'List Mapel'
-        ]);
+        $mapel = Mapel::latest()->paginate(10);
+        confirmDelete('Delete Mata Pelajaran','Apakah Anda Yakin ?');
+        return view('dashboard.admin.mapel.index')
+        ->with('title','List Mapel')
+        ->with(compact('mapel'));
     }
     function mapelCreate(): View {
         return view('dashboard.admin.mapel.create',[
             'title' => 'Create Mapel'
         ]);
     }
-    function mapelStore(Request $request) {
-        
+    function mapelStore(Request $request) : RedirectResponse {
+        $validatedData = $request->validate([
+            'nama_mapel' => 'required|string|max:255|unique:mata_pelajaran',
+        ]);
+        $mapel = new Mapel;
+        $mapel->nama_mapel = $validatedData['nama_mapel'];
+        $mapel->save();
+        return redirect()->route('admin.mapel.index')->with('success','Mata Pelajaran Berhasil DiTambahkan');
+    }
+    function mapelEdit($id) : View {
+        $mapel = Mapel::find($id);
+        return view('dashboard.admin.mapel.edit', [
+            'title' => 'Edit Mapel',
+            'mapel' => $mapel,
+        ]);
+    }
+    function mapelUpdate(Request $request,$id) : RedirectResponse {
+        $mapel = Mapel::find($id);
+        $validatedData = $request->validate([
+            'nama_mapel' => 'required|string|max:255|unique:mata_pelajaran',
+        ]);
+        $mapel->nama_mapel = $validatedData['nama_mapel'];
+        $mapel->save();
+        return redirect()->route('admin.mapel.index')->with('success', 'Mata Pelajaran Berhasil DiEdit');
+    }
+    function mapelDestroy(Mapel $mapel) {
+        $mapel->delete();
+        alert()->success('Success!','Mata Pelajaran Deleted');
         return redirect()->route('admin.mapel.index');
     }
     // bagian mapel end
