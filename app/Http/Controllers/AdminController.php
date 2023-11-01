@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Alert;
+use App\Enums\UserRole;
+use App\Models\Guru;
+use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Jurusan;
@@ -16,9 +19,38 @@ class AdminController extends Controller
 
     // bagian guru start
     function guruIndex() : View {
+        $guru = Guru::all();
         return view('dashboard.admin.guru.index',[
             'title' => 'List Guru',
+            'guru' => $guru,
         ]);
+    }
+    function guruCreate() : View {
+        $mapel = Mapel::all();
+        return view('dashboard.admin.guru.create',[
+            'title' => 'Create Guru',
+            'mapel' => $mapel,
+        ]);
+    }
+    function guruStore(Request $request) : RedirectResponse {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'password' => 'required',
+            'mata_pelajaran_id' => 'required',
+        ]);
+        $validatedData['role'] = UserRole::GuruMapel;
+        $user = new User;
+        $guru = new Guru;
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = $validatedData['password'];
+        $user->role = $validatedData['role'];
+        $user->save();
+        $guru->user_id = $user->id;
+        $guru->mata_pelajaran_id = $validatedData['mata_pelajaran_id'];
+        $guru->save();
+        return redirect()->route('admin.guru.index')->with('success', 'Guru Berhasil DiTambahkan');
     }
     // bagian guru end
     // bagian siswa start

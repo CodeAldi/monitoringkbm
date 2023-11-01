@@ -27,6 +27,8 @@ Route::get('/dashboard',[DashboardController::class, 'index'])->middleware('auth
 Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->group(function(){
     // menu guru
     Route::get('admin/list-guru','guruIndex')->name('admin.guru.index');
+    Route::get('admin/create-guru','guruCreate')->name('admin.guru.create');
+    Route::post('admin/store-guru','guruStore')->name('admin.guru.store');
     // menu guru end
     // menu siswa
     Route::get('admin/list-siswa','siswaIndex')->name('admin.siswa.index');

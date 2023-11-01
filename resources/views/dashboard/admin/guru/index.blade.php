@@ -21,7 +21,7 @@
                 <h5>List Guru</h5>
             </div>
             <div class="col-md-4">
-                <a href="#" class="btn btn-primary float-end"><i class='menu-icon bx bxs-plus-square'></i>Tambah
+                <a href="{{ route('admin.guru.create') }}" class="btn btn-primary float-end"><i class='menu-icon bx bxs-plus-square'></i>Tambah
                     Guru</a>
             </div>
         </div>
@@ -37,13 +37,13 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+                    @forelse ($guru as $item)
                     <tr>
                         <td>
-                            1
+                            {{ $loop->iteration }}
                         </td>
-                        <td>Jerry Milton</td>
-                        <td>MTK
-                        </td>
+                        <td>{{ $item->user->name }}</td>
+                        <td>{{ $item->mata_pelajaran->nama_mapel }}</td>
                         <td>
                             <span class="badge bg-label-success me-1">Hadir</span>
                             <span class="badge bg-label-primary me-1">Mengajar</span>
@@ -69,36 +69,11 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            2
-                        </td>
-                        <td>Susan</td>
-                        <td>IPA
-                        </td>
-                        <td>
-                            <span class="badge bg-label-success me-1">Hadir</span>
-                            <span class="badge bg-label-warning me-1">Piket</span>
-                        </td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-2"></i>
-                                        Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                    @empty
                     <tr>
                         <td colspan="5" class="text-center text-uppercase text-white bg-warning">No Data</td>
                     </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
