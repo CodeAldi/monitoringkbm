@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Alert;
-use App\Models\Jurusan;
+use App\Models\Kelas;
 use App\Models\Mapel;
-use Illuminate\Http\RedirectResponse;
+use App\Models\Jurusan;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 
 class AdminController extends Controller
 {
@@ -111,16 +112,38 @@ class AdminController extends Controller
         return redirect()->route('admin.jurusan.index')->with('success', 'Jurusan Berhasil DiEdit');
     }
     function jurusanDestroy(Jurusan $jurusan){
-        // $jurusan->delete();
-        // alert()->success('Success!', 'Jurusan Deleted');
+        $jurusan->delete();
+        alert()->success('Success!', 'Jurusan Deleted');
         return redirect()->route('admin.jurusan.index');
     }
     // bagian jurusan end
     // bagian kelas start
     function kelasIndex(): view {
+        $kelas = Kelas::all();
         return view('dashboard.admin.kelas.index',[
             'title' => 'List Kelas',
+            'kelas' => $kelas,
         ]);
+    }
+    function kelasCreate() : View {
+        $jurusan = Jurusan::all();
+        return view('dashboard.admin.kelas.create',[
+            'title' => 'Create Kelas',
+            'jurusan' => $jurusan
+        ]);
+    }
+    function kelasStore(Request $request) : RedirectResponse {
+        $validatedData = $request->validate([
+            'nama_kelas' => 'required|max:255|string',
+            'tingkat_kelas' => 'required|integer|min:1',
+            'jurusan' => 'required|integer|min:1',
+        ]);
+        $kelas = new Kelas;
+        $kelas->nama_kelas = $validatedData['nama_kelas'];
+        $kelas->tingkat = $validatedData['tingkat_kelas'];
+        $kelas->jurusan_id = $validatedData['jurusan'];
+        $kelas->save();
+        return redirect()->route('admin.kelas.index')->with('success', 'Kelas Berhasil Di Tambahkan');
     }
     // bagian kelas end
 }

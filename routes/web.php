@@ -49,6 +49,9 @@ Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->g
     // menu jurusan end
     // menu kelas
     Route::get('admin/list-kelas','kelasIndex')->name('admin.kelas.index');
+    Route::get('admin/create-kelas','kelasCreate')->name('admin.kelas.create');
+    Route::post('admin/store-kelas','kelasStore')->name('admin.kelas.store');
+    
     // menu kelas end
 });
 
