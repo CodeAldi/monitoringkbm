@@ -55,8 +55,12 @@
                                     <a class="dropdown-item" href="javascript:void(0);"><i
                                             class="bx bx-edit-alt me-2"></i>
                                         Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-2"></i>
-                                        Delete</a>
+                                    <form action="{{ route('admin.kelas.destroy',['kelas'=>$item]) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="dropdown-item btn" onclick="konfirmasi()"><i class="bx bx-trash me-2"></i>
+                                            Delete</button>
+                                    </form>
                                 </div>
                             </div>
                         </td>

@@ -145,5 +145,10 @@ class AdminController extends Controller
         $kelas->save();
         return redirect()->route('admin.kelas.index')->with('success', 'Kelas Berhasil Di Tambahkan');
     }
+    function kelasDestroy(Kelas $kelas) {
+        $kelas->delete();
+        alert()->success('Success!', 'kelas Deleted');
+        return redirect()->route('admin.kelas.index');
+    }
     // bagian kelas end
 }

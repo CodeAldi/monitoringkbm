@@ -47,12 +47,12 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="{{ route("admin.mapel.edit",["id"=>$item->id]) }}"><i class="bx bx-edit-alt me-2"></i>
                                             Edit</a>
-                                            <form action="{{ route("admin.mapel.destroy",["mapel"=>$item]) }}" method="POST">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="dropdown-item btn" onclick="konfirmasi()" ><i class="bx bx-trash me-2"></i>
-                                                    Delete</button>
-                                            </form>
+                                        <form action="{{ route("admin.mapel.destroy",["mapel"=>$item]) }}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="dropdown-item btn" onclick="konfirmasi()" ><i class="bx bx-trash me-2"></i>
+                                                Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </td>

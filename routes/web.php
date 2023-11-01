@@ -51,6 +51,7 @@ Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->g
     Route::get('admin/list-kelas','kelasIndex')->name('admin.kelas.index');
     Route::get('admin/create-kelas','kelasCreate')->name('admin.kelas.create');
     Route::post('admin/store-kelas','kelasStore')->name('admin.kelas.store');
+    Route::delete('admin/{kelas}/delete-kelas', 'kelasDestroy')->name('admin.kelas.destroy');
     
     // menu kelas end
 });
