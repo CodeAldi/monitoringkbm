@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('kelas', function (Blueprint $table) {
-            $table->foreignId('jurusan')->after('tingkat');
+            $table->foreignId('jurusan_id')->after('tingkat');
             
         });
     }

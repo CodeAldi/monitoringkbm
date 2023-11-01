@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('guru', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user');
-            $table->foreignId('mata_pelajaran');
+            $table->foreignId('user_id');
+            $table->foreignId('mata_pelajaran_id');
             $table->timestamps();
         });
     }
