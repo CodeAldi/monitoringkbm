@@ -114,8 +114,43 @@
         @elseif(Auth()->user()->hasRole('wakil kurikulum'))
         
         @elseif(Auth()->user()->hasRole('guru mapel'))
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-bell'></i>
+                Piket
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-badge-check'></i>
+                Absensi Guru
+            </a>
+        </li>
+        {{-- KBM --}}
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Kegiatan Belajar Mengajar</span>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-user-check'></i>
+                Absensi Siswa
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-receipt'></i>
+                RPP
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="#" class="menu-link">
+                <i class='menu-icon bx bx-check-square'></i>
+                Lapor Proses KBM
+            </a>
+        </li>
+        {{-- /.KBM --}}
         
-        @elseif(Auth()->user()->hasRole('wakil piket'))
+        @elseif(Auth()->user()->hasRole('guru piket'))
         <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class='menu-icon bx bx-show'></i>
