@@ -115,7 +115,7 @@
         
         @elseif(Auth()->user()->hasRole('guru mapel'))
         <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('gmapel.piket') }}" class="menu-link">
                 <i class='menu-icon bx bx-bell'></i>
                 Piket
             </a>
@@ -132,14 +132,14 @@
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
-                <i class='menu-icon bx bx-user-check'></i>
-                Absensi Siswa
+                <i class='menu-icon bx bx-receipt'></i>
+                RPP
             </a>
         </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
-                <i class='menu-icon bx bx-receipt'></i>
-                RPP
+                <i class='menu-icon bx bx-user-check'></i>
+                Absensi Siswa
             </a>
         </li>
         <li class="menu-item">
@@ -151,6 +151,12 @@
         {{-- /.KBM --}}
         
         @elseif(Auth()->user()->hasRole('guru piket'))
+        <li class="menu-item">
+            <a href="{{ route('piket.mengajar') }}" class="menu-link">
+                <i class='menu-icon bx bx-arrow-back'></i>
+                Kembali (Mengajar)
+            </a>
+        </li>
         <li class="menu-item">
             <a href="#" class="menu-link">
                 <i class='menu-icon bx bx-show'></i>

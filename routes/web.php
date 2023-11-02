@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GuruMapelController;
 use App\Http\Controllers\GuruPiketController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,5 +61,9 @@ Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->g
 });
 
 Route::controller(GuruPiketController::class)->middleware(['auth','role:guru piket'])->group(function(){
-    Route::get('guru-piket/home','home')->name('piket.home');
+    Route::get('guru-piket/mengajar','menjadiGmapel')->name('piket.mengajar');
+});
+
+Route::controller(GuruMapelController::class)->middleware(['auth','role:guru mapel'])->group(function(){
+    Route::get('guru-mapel/piket','menjadiPiket')->name('gmapel.piket');
 });
