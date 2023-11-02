@@ -10,6 +10,12 @@
             <!-- Register -->
             <div class="card">
                 <div class="card-body">
+                    @if (session('success'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        Pendaftaran Berhasil, Silahkan Login !
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
                         <a href="index.html" class="app-brand-link gap-2">

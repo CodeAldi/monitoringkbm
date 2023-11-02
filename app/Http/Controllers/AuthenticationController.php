@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRole;
+use App\Models\User;
+use App\Models\Kelas;
+use App\Models\Jurusan;
+use App\Models\Siswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -15,9 +20,35 @@ class AuthenticationController extends Controller
     }
 
     function RenderRegisterPage() {
+        $jurusan = Jurusan::all();
+        $kelas = Kelas::all();
         return view('authentication.register', [
-            'title' => 'Register'
+            'title' => 'Register',
+            'jurusan' => $jurusan,
+            'kelas' => $kelas,
         ]);
+    }
+    function RegisterStore(Request $request) {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'password' => 'required',
+            'jurusan_id' => 'required|integer|min:1',
+            'kelas_id' => 'required|integer|min:1',
+        ]);
+        $validatedData['role'] = UserRole::Siswa;
+        $user = new User();
+        $user->name = $validatedData['name'];
+        $user->email = $validatedData['email'];
+        $user->password = $validatedData['password'];
+        $user->role = $validatedData['role'];
+        $user->save();
+        $siswa = new Siswa();
+        $siswa->user_id = $user->id;
+        $siswa->jurusan_id = $validatedData['jurusan_id'];
+        $siswa->kelas_id = $validatedData['kelas_id'];
+        $siswa->save();
+        return redirect()->route('login')->with('success' , 'Pendaftaran Berhasil, Silahkan Login !');
     }
 
     /**

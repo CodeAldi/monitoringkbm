@@ -64,11 +64,34 @@
                     </div>
                     <!-- /Logo -->
 
-                    <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                    <form id="formAuthentication" class="mb-3" action="{{ route('register.store') }}" method="POST">
+                        @csrf
                         <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username" name="username"
-                                placeholder="Enter your username" autofocus />
+                            <label for="name" class="form-label">nama</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                placeholder="Enter your name" autofocus />
+                        </div>
+                        <div class="mb-3">
+                            <label for="jurusan" class="form-label">Jurusan</label>
+                            <select name="jurusan_id" id="jurusan" class="form-select">
+                                <option value="#" hidden selected>Pilih Jurusan</option>
+                                @forelse ($jurusan as $item)
+                                    <option value="{{ $item->id }}">{{ $item->nama_jurusan }}</option>
+                                @empty
+                                    <option value="#">Data Jurusan Not Found</option>
+                                @endforelse
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="kelas" class="form-label">Kelas</label>
+                            <select name="kelas_id" id="kelas" class="form-select">
+                                <option value="#" hidden selected>Pilih kelas</option>
+                                @forelse ($kelas as $item)
+                                    <option value="{{ $item->id }}">{{ $item->tingkat.' '.$item->nama_kelas.' '.$item->jurusan->nama_jurusan }}</option>
+                                @empty
+                                    <option value="#">Data kelas Not Found</option>
+                                @endforelse
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
