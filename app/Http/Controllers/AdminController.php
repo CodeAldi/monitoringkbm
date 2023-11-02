@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Kelas;
 use App\Models\Mapel;
 use App\Models\Jurusan;
+use App\Models\Siswa;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
@@ -55,8 +56,10 @@ class AdminController extends Controller
     // bagian guru end
     // bagian siswa start
     function siswaIndex() : View {
+        $siswa = Siswa::all();
         return view('dashboard.admin.siswa.index',[
             'title' => 'List Siswa',
+            'siswa' => $siswa,
         ]);
     }
     // bagian siswa end
