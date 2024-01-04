@@ -22,5 +22,11 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('iniadmin123'),
             'role' => UserRole::Admin,
         ]);
+        \App\Models\User::create([
+            'name' => 'Wakil Kurikulum',
+            'email' => 'wakur@test.com',
+            'password' => bcrypt('iniwakur123'),
+            'role' => UserRole::WakilKurikulum,
+        ]);
     }
 }

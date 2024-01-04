@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('guru', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('mata_pelajaran_id');
+            $table->string('jenis_kelamin');
+            $table->string('alamat');
+            $table->string('status');
+            $table->string('jabatan');
             $table->timestamps();
         });
     }

@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->foreignId('jurusan_id');
-            $table->foreignId('kelas_id');
+            $table->string('alamat');
+            $table->string('jenis_kelamin');
+            $table->foreignId('jurusan_id')->nullable();
+            $table->foreignId('kelas_id')->nullable();
             $table->timestamps();
         });
     }

@@ -27,7 +27,7 @@
         
         {{--! data master !--}}
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Data Master</span>
+            <span class="menu-header-text">Data Master KBM</span>
         </li>
         <li class="menu-item {{ (Request::RouteIs('admin.mapel.*')) ? 'active' : '' }}">
             <a href="{{ route('admin.mapel.index') }}" class="menu-link">
@@ -48,9 +48,9 @@
             </a>
         </li>
         {{-- /.data master --}}
-        {{--! data user !--}}
+        {{--! data master user !--}}
         <li class="menu-header small text-uppercase">
-            <span class="menu-header-text">Data Users</span>
+            <span class="menu-header-text">Data Master Users</span>
         </li>
         <li class="menu-item {{ (Request::RouteIs('admin.guru.*')) ? 'active' : '' }}">
             <a href="{{ route('admin.guru.index') }}" class="menu-link">
@@ -70,7 +70,7 @@
                 Siswa
             </a>
         </li>
-        {{-- /.data user --}}
+        {{-- /.data master user --}}
         @elseif(Auth()->user()->hasRole('wakil kurikulum'))
         
         @elseif(Auth()->user()->hasRole('guru mapel'))
