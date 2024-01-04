@@ -14,7 +14,7 @@
     </div>
 </div>
 @endif
-<div class="card h-100">
+<div class="card">
     <div class="card-body">
         <div class="row mb-2">
             <div class="col-md-8">
@@ -25,7 +25,7 @@
                     Kelas</a>
             </div>
         </div>
-        <div class="table-responsive text-nowrap h-50">
+        <div class="table-responsive text-nowrap">
             <table class="table">
                 <thead>
                     <tr>
