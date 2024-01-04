@@ -53,12 +53,6 @@
                         </div>
                     </form>
 
-                    <p class="text-center">
-                        <span>Doesn't having account ?</span>
-                        <a href="{{ route('register') }}">
-                            <span>Create an account</span>
-                        </a>
-                    </p>
                 </div>
             </div>
             <!-- /Register -->
